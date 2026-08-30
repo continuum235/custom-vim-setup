@@ -33,6 +33,10 @@ set smartindent
 " -----------------------------------------------------------------
 inoremap jj <Esc>
 
+" Undo with Ctrl+z in Normal and Insert modes
+nnoremap <C-z> u
+inoremap <C-z> <C-o>u
+
 " Comment selection with / or Shift+/ (?) in Visual mode
 xmap / gc
 xmap ? gc
