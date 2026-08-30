@@ -12,6 +12,9 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " Automatically close brackets, parentheses, and quotes
 Plug 'jiangmiao/auto-pairs'
+
+" Commenting plugin
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 filetype plugin indent on
@@ -30,11 +33,16 @@ set smartindent
 " -----------------------------------------------------------------
 inoremap jj <Esc>
 
+" Comment selection with / or Shift+/ (?) in Visual mode
+xmap / gc
+xmap ? gc
+
 " VS Code style completion:
 " Use Tab to cycle next and confirm/insert the word if menu is open
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <CR>    pumvisible() ? "\<C-y>" : "\<CR>"
+
 " -----------------------------------------------------------------
 " LSP & Completion Settings
 " -----------------------------------------------------------------
@@ -50,6 +58,9 @@ augroup LspGoSetup
     autocmd FileType go setlocal omnifunc=lsp#complete
 augroup END
 
+" -----------------------------------------------------------------
+" Cursor Settings
+" -----------------------------------------------------------------
 " Change cursor shape: thin vertical line in Insert mode, block in Normal mode
 let &t_SI = "\e[5 q" " Insert mode: steady vertical line (bar)
 let &t_SR = "\e[3 q" " Replace mode: steady underline
